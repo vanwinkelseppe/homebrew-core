@@ -16,5 +16,7 @@ class Azqr < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/azqr -v")
+    output = shell_output("#{bin}/azqr scan --filters notexists.yaml 2>&1", 1)
+    assert_includes output, "failed reading data from file"
   end
 end
