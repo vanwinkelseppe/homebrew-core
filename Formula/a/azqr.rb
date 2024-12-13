@@ -2,8 +2,8 @@ class Azqr < Formula
   desc "Azure Quick Review"
   homepage "https://azure.github.io/azqr"
   url "https://github.com/Azure/azqr.git",
-    tag:      "v.2.0.3",
-    revision: "655239455eec8ac434b9ebc7a68af9c2b117499b"
+    tag:      "v.2.0.4",
+    revision: "4891102e05bf35064017eacdbc5415b92a39795e"
   license "MIT"
 
   depends_on "go" => :build
@@ -16,9 +16,9 @@ class Azqr < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/azqr -v")
-    outputFilter = shell_output("#{bin}/azqr scan --filters notexists.yaml 2>&1", 1)
-    assert_includes outputFilter, "failed reading data from file"
-    outputAuth = shell_output("#{bin}/azqr scan 2>&1", 1)
-    assert_includes outputAuth, "Failed to list subscriptions"
+    output_filter = shell_output("#{bin}/azqr scan --filters notexists.yaml 2>&1", 1)
+    assert_includes output_filter, "failed reading data from file"
+    output_auth = shell_output("#{bin}/azqr scan 2>&1", 1)
+    assert_includes output_auth, "Failed to list subscriptions"
   end
 end
